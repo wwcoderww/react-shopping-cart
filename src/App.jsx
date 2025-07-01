@@ -5,6 +5,8 @@ import Welcome from "./pages/Welcome";
 import Products from "./pages/Products";
 import Checkout from "./pages/Checkout";
 import Login from "./pages/Login";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 const router = createBrowserRouter([
   {
@@ -19,10 +21,17 @@ const router = createBrowserRouter([
   },
 ]);
 
+const queryClient = new QueryClient({
+  defaultOptions: { queries: { staleTime: 60 * 1000 } },
+});
+
 export default function App() {
   return (
-    <RouterProvider router={router}>
-      <Layout />
-    </RouterProvider>
+    <QueryClientProvider client={queryClient}>
+      <ReactQueryDevtools initialIsOpen={false} />
+      <RouterProvider router={router}>
+        <Layout />
+      </RouterProvider>
+    </QueryClientProvider>
   );
 }
