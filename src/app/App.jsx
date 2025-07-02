@@ -1,12 +1,12 @@
-import React from "react";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Layout from "./routes/Layout";
-import Welcome from "./routes/Welcome";
-import Products from "./routes/Products";
-import Checkout from "./routes/Checkout";
-import Login from "./routes/Login";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import React from "react";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Checkout from "./routes/Checkout";
+import Layout from "./routes/Layout";
+import Login from "./routes/Login";
+import Products from "./routes/Products";
+import Welcome from "./routes/Welcome";
 
 const router = createBrowserRouter([
   {
