@@ -1,25 +1,27 @@
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
+import Container from "../components/products/Container";
 
 async function fetchData() {
-  try {
-    const data = await fetch("https://fakestoreapi.com/products").then(
-      (res) => {
-        if (!res.ok) throw new Error("Error Loading from API");
-        return res.json();
-      }
-    );
-    return data;
-  } catch (error) {
-    return error;
-  }
+  return await fetch("https://fakestoreapi.com/products").then((res) => {
+    if (!res.ok)
+      // If failed to fetch data
+      throw new Error("Unable to load products at this time. Try again later");
+    // Else return data
+    return res.json();
+  });
 }
-
 export default function Products() {
+  // Store data inside queryKey: allItems
   const { isLoading, data, error } = useQuery({
     queryKey: ["allItems"],
     queryFn: fetchData,
   });
-  console.log(data);
-  return <div>Products</div>;
+  return (
+    <>
+      {isLoading && <div>LOADING</div>}
+      {error && <div>ERROR: {error.message}</div>}
+      {!isLoading && !error && <Container data={data} />}
+    </>
+  );
 }
