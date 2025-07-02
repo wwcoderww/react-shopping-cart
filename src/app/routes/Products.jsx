@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
-import Container from "../components/products/Container";
+import Container from "../../features/products/Container";
 
 async function fetchData() {
   return await fetch("https://fakestoreapi.com/products").then((res) => {

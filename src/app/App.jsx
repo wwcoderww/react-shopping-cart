@@ -1,10 +1,10 @@
 import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Layout from "./pages/Layout";
-import Welcome from "./pages/Welcome";
-import Products from "./pages/Products";
-import Checkout from "./pages/Checkout";
-import Login from "./pages/Login";
+import Layout from "./routes/Layout";
+import Welcome from "./routes/Welcome";
+import Products from "./routes/Products";
+import Checkout from "./routes/Checkout";
+import Login from "./routes/Login";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
