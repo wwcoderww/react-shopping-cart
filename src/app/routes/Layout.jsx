@@ -5,7 +5,7 @@ import { CartProvider } from "../../hooks/CartContext";
 
 export default function Layout() {
   return (
-    <div>
+    <div className="bg-blue-600">
       <CartProvider>
         <NavBar />
         <Outlet />
