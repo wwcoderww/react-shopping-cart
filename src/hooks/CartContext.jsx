@@ -5,29 +5,39 @@ const CartContext = createContext();
 function CartProvider({ children }) {
   const [cart, setCart] = useState([]);
 
-  function addToCart(item, quantity) {
+  function updateCart(item, quantity) {
     // Check if item is already in cart
     const itemExist = cart.find((cartItem) => cartItem.title === item.title);
-
+    // Check if invalid quantity
+    if (!itemExist?.quantity && quantity < 1) return;
+    // Check if item needs to be deleted
+    const toDelete = itemExist?.quantity + quantity < 1;
+    if (toDelete)
+      return setCart((cur) =>
+        cur.filter((cartItem) => cartItem.title !== item.title)
+      );
+    // If item is in cart this is the new cart
     const newCart = cart.map((cartItem) => {
       if (item === cartItem) {
         cartItem.quantity += quantity;
         return cartItem;
+      } else {
+        return cartItem;
       }
-      return cartItem;
     });
-    // If item was not in cart
-    if (!itemExist) {
-      console.log("1");
+    // If It was in cart
+    if (itemExist) {
+      setCart(newCart);
+    } else {
+      // If item was not in cart
       item.quantity = quantity;
       setCart((cur) => [...cur, item]);
-    } else {
-      setCart(newCart);
     }
+    console.log(cart);
   }
 
   return (
-    <CartContext.Provider value={{ cart, setCart, addToCart }}>
+    <CartContext.Provider value={{ cart, setCart, updateCart }}>
       {children}
     </CartContext.Provider>
   );
