@@ -12,10 +12,12 @@ function CartProvider({ children }) {
     if (!itemExist?.quantity && quantity < 1) return;
     // Check if item needs to be deleted
     const toDelete = itemExist?.quantity + quantity < 1;
-    if (toDelete)
+    if (toDelete) {
+      item.quantity = null;
       return setCart((cur) =>
         cur.filter((cartItem) => cartItem.title !== item.title)
       );
+    }
     // If item is in cart this is the new cart
     const newCart = cart.map((cartItem) => {
       if (item === cartItem) {

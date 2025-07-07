@@ -22,7 +22,7 @@ export default function Item({ item }) {
         <ItemStats price={item.price} rating={item.rating} />
         <ItemInput item={item} />
       </li>
-      <ItemDetails openModal={openModal} closeModal={closeModal} />
+      <ItemDetails openModal={openModal} closeModal={closeModal} item={item} />
     </>
   );
 }
