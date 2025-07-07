@@ -7,14 +7,17 @@ export default function ItemInput({ item }) {
   const cartItem = cart.find((cartItem) => cartItem.title === item.title);
 
   return (
-    <div className="flex justify-center pt-16 pb-4 text-3xl">
+    <div
+      className="flex justify-center py-9 text-3xl gap-3 items-center"
+      onClick={(e) => e.stopPropagation()}
+    >
       {cartItem && (
         <FaMinus
           onClick={() => updateCart(item, -1)}
           className=" text-blue-200 hover:text-4xl"
         />
       )}
-      <div>{cartItem?.quantity}</div>
+      <div className="text-4xl">{cartItem?.quantity}</div>
       <FaPlus
         onClick={() => updateCart(item, 1)}
         className=" text-blue-200 hover:text-4xl"
