@@ -5,10 +5,12 @@ import NavBar from "../../features/navbar/NavBar";
 
 export default function Layout() {
   return (
-    <div className="bg-blue-600">
+    <div className="bg-blue-600 w-screen h-screen flex flex-col">
       <CartProvider>
         <NavBar />
-        <Outlet />
+        <div className="flex-1 overflow-y-scroll">
+          <Outlet />
+        </div>
       </CartProvider>
     </div>
   );

@@ -5,7 +5,7 @@ import Item from "./Item";
 export default function ItemContainer() {
   const { cart, updateCart } = useCart();
   return (
-    <ul>
+    <ul className="py-20">
       {cart?.map((item) => (
         <Item item={item} key={item.id} updateCart={updateCart} />
       ))}
