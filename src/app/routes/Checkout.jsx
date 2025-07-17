@@ -3,7 +3,7 @@ import ItemContainer from "../../features/checkout/ItemContainer";
 
 export default function Checkout() {
   return (
-    <div>
+    <div className="w-full h-full">
       <ItemContainer />
     </div>
   );

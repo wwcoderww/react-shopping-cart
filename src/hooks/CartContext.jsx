@@ -6,11 +6,11 @@ function CartProvider({ children }) {
   const [cart, setCart] = useState([]);
 
   function updateCart(item, quantity) {
-    // Check if item is already in cart
+    // 1. Check if item is already in cart
     const itemExist = cart.find((cartItem) => cartItem.title === item.title);
-    // Check if invalid quantity
+    // 2. Check if invalid quantity
     if (!itemExist?.quantity && quantity < 1) return;
-    // Check if item needs to be deleted
+    // 3. Check if item needs to be deleted (Quanity < 1)
     const toDelete = itemExist?.quantity + quantity < 1;
     if (toDelete) {
       item.quantity = null;
@@ -18,7 +18,7 @@ function CartProvider({ children }) {
         cur.filter((cartItem) => cartItem.title !== item.title)
       );
     }
-    // If item is in cart this is the new cart
+    // 4a. If item is in cart this is the new cart
     const newCart = cart.map((cartItem) => {
       if (item === cartItem) {
         cartItem.quantity += quantity;
@@ -27,11 +27,11 @@ function CartProvider({ children }) {
         return cartItem;
       }
     });
-    // If It was in cart
+    // 4a. If It was in cart
     if (itemExist) {
       setCart(newCart);
     } else {
-      // If item was not in cart
+      // 4b.If item was not in cart
       item.quantity = quantity;
       setCart((cur) => [...cur, item]);
     }
