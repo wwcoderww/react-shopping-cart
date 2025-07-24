@@ -14,12 +14,14 @@ export default function ItemDetails({ item, openModal, closeModal }) {
 
   return createPortal(
     <Modal closeModal={closeModal}>
-      <div className="flex">
+      <div className="flex p-1">
         <DetailImage image={item.image} />
-        <div className="max-w-140 flex flex-col flex-1">
-          <DetailTitle item={item} />
-          <DetailCatagory catagory={item.category} />
-          <div className="flex py-4">
+        <div className="flex flex-col flex-1">
+          <div className="p-4">
+            <DetailTitle item={item} />
+            <DetailCatagory catagory={item.category} />
+          </div>
+          <div className="flex py-4 border-t-2 pr-4 pl-2">
             <DetailPrice price={item.price} />
             <DetailRating rating={item.rating} />
           </div>
