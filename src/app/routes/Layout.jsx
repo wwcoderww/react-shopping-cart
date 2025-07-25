@@ -8,7 +8,7 @@ export default function Layout() {
     <div className="bg-blue-600 w-screen h-screen flex flex-col">
       <CartProvider>
         <NavBar />
-        <div className="flex-1 overflow-y-scroll">
+        <div className="flex-1 overflow-y-scroll bg-blue-500">
           <Outlet />
         </div>
       </CartProvider>

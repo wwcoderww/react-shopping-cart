@@ -3,7 +3,7 @@ import ItemContainer from "../../features/checkout/ItemContainer";
 
 export default function Checkout() {
   return (
-    <div className="w-full h-full">
+    <div className="w-full h-full overflow-scroll">
       <ItemContainer />
     </div>
   );

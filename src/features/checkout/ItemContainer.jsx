@@ -1,6 +1,7 @@
 import React from "react";
 import { useCart } from "../../hooks/CartContext";
-import Item from "./Item";
+import ItemList from "./ItemList";
+import Summary from "./Summary";
 
 export default function ItemContainer() {
   const { cart, updateCart } = useCart();
@@ -13,11 +14,11 @@ export default function ItemContainer() {
           Add Items To Cart!
         </div>
       ) : (
-        <ul className="py-20">
-          {cart?.map((item) => (
-            <Item item={item} key={item.id} updateCart={updateCart} />
-          ))}
-        </ul>
+        <div className="py-16 max-w-8/12 mx-auto">
+          <ItemList cart={cart} updateCart={updateCart} />
+          <Summary cart={cart} />
+          <form action=""></form>
+        </div>
       )}
     </>
   );

@@ -6,21 +6,23 @@ export default function ItemInput({ item }) {
   const { updateCart, cart } = useCart();
   const cartItem = cart.find((cartItem) => cartItem.title === item.title);
 
+  function handleAdd(e, amount) {
+    e.stopPropagation();
+    updateCart(item, amount);
+  }
+
   return (
-    <div
-      className="flex justify-center py-9 text-3xl gap-3 items-center"
-      onClick={(e) => e.stopPropagation()}
-    >
+    <div className="flex justify-center py-12 h-32 text-5xl gap-3 items-center">
       {cartItem && (
         <FaMinus
-          onClick={() => updateCart(item, -1)}
-          className=" text-blue-200 hover:text-4xl"
+          onClick={(e) => handleAdd(e, -1)}
+          className=" text-blue-200 hover:text-6xl w-12"
         />
       )}
-      <div className="text-4xl">{cartItem?.quantity}</div>
+      <div className=" mx-2">{cartItem?.quantity}</div>
       <FaPlus
-        onClick={() => updateCart(item, 1)}
-        className=" text-blue-200 hover:text-4xl"
+        onClick={(e) => handleAdd(e, 1)}
+        className=" text-blue-200 hover:text-6xl w-12"
       />
     </div>
   );
