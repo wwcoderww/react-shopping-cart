@@ -1,5 +1,5 @@
 import { SummaryTotal } from "./summary/SummaryTotal";
-import { PreTotal } from "./../../../PreTotal";
+import { PreTotal } from "./summary/SummaryPreTotal";
 import { SummaryList } from "./summary/SummaryList";
 import React from "react";
 

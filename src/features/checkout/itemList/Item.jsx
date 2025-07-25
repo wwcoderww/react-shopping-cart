@@ -1,7 +1,7 @@
 import React from "react";
-import ItemImage from "./item/ItemImage";
-import ItemInfo from "./item/ItemInfo";
-import ItemInput from "./item/ItemInput";
+import ItemImage from "./ItemImage";
+import ItemInfo from "./ItemInfo";
+import ItemInput from "./ItemInput";
 
 export default function Item({ item, updateCart, index }) {
   const liStyle = `flex h-56 ${index !== 0 && "border-t-3"}`;

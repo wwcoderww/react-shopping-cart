@@ -1,5 +1,5 @@
 import React from "react";
-import Item from "./Item";
+import Item from "./itemList/Item";
 
 export default function ItemList({ cart, updateCart }) {
   return (
