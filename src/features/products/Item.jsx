@@ -15,7 +15,7 @@ export default function Item({ item }) {
     <>
       <li
         onClick={showModal}
-        className="w-80 border-5 rounded-sm text-blue-100 hover:border-blue-900 hover:cursor-pointer"
+        className="w-80 border-5 rounded-sm text-blue-100 hover:border-blue-600 hover:cursor-pointer"
       >
         <ItemImage image={item.image} />
         <ItemTitle title={item.title} />

@@ -16,13 +16,13 @@ export default function ItemInput({ item }) {
       {cartItem && (
         <FaMinus
           onClick={(e) => handleAdd(e, -1)}
-          className=" text-blue-200 hover:text-6xl w-12"
+          className=" text-blue-200 hover:text-6xl w-12 hover:text-blue-600"
         />
       )}
       <div className=" mx-2">{cartItem?.quantity}</div>
       <FaPlus
         onClick={(e) => handleAdd(e, 1)}
-        className=" text-blue-200 hover:text-6xl w-12"
+        className=" text-blue-200 hover:text-6xl w-12 hover:text-blue-600"
       />
     </div>
   );

@@ -18,7 +18,7 @@ function CartProvider({ children }) {
         cur.filter((cartItem) => cartItem.title !== item.title)
       );
     }
-    // 4a. If item is in cart this is the new cart
+    // 4a1. If item is in cart this is the new cart
     const newCart = cart.map((cartItem) => {
       if (item === cartItem) {
         cartItem.quantity += quantity;
@@ -27,7 +27,7 @@ function CartProvider({ children }) {
         return cartItem;
       }
     });
-    // 4a. If It was in cart
+    // 4a2. If It was in cart
     if (itemExist) {
       setCart(newCart);
     } else {
