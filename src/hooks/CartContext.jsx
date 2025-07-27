@@ -3,7 +3,7 @@ import { createContext, useContext, useState } from "react";
 const CartContext = createContext();
 
 function CartProvider({ children }) {
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState(JSON.parse(localStorage.getItem("cart")));
 
   function updateCart(item, quantity) {
     // 1. Check if item is already in cart
@@ -30,10 +30,13 @@ function CartProvider({ children }) {
     // 4a2. If It was in cart
     if (itemExist) {
       setCart(newCart);
+      localStorage.setItem("cart", JSON.stringify(newCart));
     } else {
       // 4b.If item was not in cart
       item.quantity = quantity;
-      setCart((cur) => [...cur, item]);
+      const newCart = [...cart, item];
+      setCart(newCart);
+      localStorage.setItem("cart", JSON.stringify(newCart));
     }
     console.log(cart);
   }
