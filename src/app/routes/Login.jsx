@@ -3,14 +3,25 @@ import { LoginButton } from "./../../features/login/LoginButton";
 import { LoginLinks } from "./../../features/login/LoginLinks";
 import { UserInput } from "./../../features/login/UserInput";
 import React, { useState } from "react";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../firebase/firebase";
 
 export default function Login() {
   const [newUser, setNewUser] = useState(false);
   const { register, getValues, handleSubmit } = useForm();
 
-  function submitForm(e) {
+  async function submitForm(e) {
     // e.preventDefault()
-    console.log(getValues());
+    try {
+      await signInWithEmailAndPassword(
+        auth,
+        getValues().dataName,
+        getValues().password
+      );
+      alert("Success");
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   return (
