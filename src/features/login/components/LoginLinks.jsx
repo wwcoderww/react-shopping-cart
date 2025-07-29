@@ -2,7 +2,8 @@ import React from "react";
 export function LoginLinks({ newUser, setNewUser }) {
   const message = newUser ? "login instead" : "create new account";
 
-  function changeUser() {
+  function changeUser(e) {
+    e.preventDefault();
     setNewUser((cur) => !cur);
   }
 

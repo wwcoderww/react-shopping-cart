@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { login } from "../../app/firebase/firebase";
+import { createUser, login } from "../../app/firebase/firebase";
 import { LoginButton } from "./components/LoginButton";
 import { LoginLinks } from "./components/LoginLinks";
 import { UserInput } from "./components/UserInput";
@@ -11,7 +11,12 @@ export default function Login() {
 
   async function submitForm() {
     const { email, password } = getValues();
-    await login(email, password);
+    if (newUser) {
+      console.log(email, password);
+      createUser(email, password);
+    } else {
+      await login(email, password);
+    }
   }
 
   return (
@@ -25,7 +30,7 @@ export default function Login() {
           dataName="email"
           labelName="Email"
           inputType="text"
-          {...register("dataName")}
+          {...register("email")}
         />
         <UserInput
           dataName="password"

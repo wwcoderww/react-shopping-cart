@@ -1,6 +1,10 @@
 // src/firebase.js
 import { initializeApp } from "firebase/app";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  getAuth,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
@@ -17,7 +21,18 @@ async function login(email, password) {
   }
 }
 
+function createUser(email, password) {
+  createUserWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      // Signed up
+      alert("Sucess");
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}
+
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-export { auth, login };
+export { auth, login, createUser };

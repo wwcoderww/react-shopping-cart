@@ -7,7 +7,7 @@ export function UserInput({ dataName, labelName, inputType, ...register }) {
       </label>
       <input
         type={inputType}
-        className="bg-white text-xl px-1 py-[.1rem]"
+        className="bg-white text-xl px-1 py-[.1rem] text-black"
         {...register}
       />
     </div>
