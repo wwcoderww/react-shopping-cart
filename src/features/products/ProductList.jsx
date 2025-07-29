@@ -1,7 +1,7 @@
 import React from "react";
 import Item from "./Item";
 
-export default function Container({ data }) {
+export default function ProductList({ data }) {
   return (
     <ul className="flex flex-wrap justify-center gap-5 pt-6">
       {data.map((item) => (
