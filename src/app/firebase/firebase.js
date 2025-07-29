@@ -28,7 +28,7 @@ function createUser(email, password) {
       alert("Sucess");
     })
     .catch((error) => {
-      console.log(error);
+      alert(error);
     });
 }
 
