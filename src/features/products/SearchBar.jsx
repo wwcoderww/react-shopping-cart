@@ -1,7 +1,7 @@
 import React from "react";
 import { FcSearch } from "react-icons/fc";
 
-export function SearchBar() {
+export function SearchBar({ setSearch }) {
   return (
     <div className="bg-blue-100 mx-auto mt-4 rounded-lg flex items-center w-6/12">
       <FcSearch className="mr-1 ml-3" />
@@ -9,6 +9,7 @@ export function SearchBar() {
         type="text"
         placeholder="Search"
         className="p-2 flex-1 outline-0 "
+        onChange={(e) => setSearch(e.target.value)}
       />
     </div>
   );
