@@ -15,29 +15,35 @@ export default function Login() {
   }
 
   return (
-    <div className="w-full h-full flex ">
-      <form
-        onSubmit={handleSubmit(submitForm)}
-        className="flex flex-col mx-auto my-auto items-center border-3 p-12 rounded-md bg-blue-600 text-white"
-      >
-        <div className="text-5xl font-[700] p-3">Welcome</div>
-        <div className="p-6 flex flex-col gap-6">
+    <form
+      onSubmit={handleSubmit(submitForm)}
+      className="flex flex-col mx-auto my-auto items-center border-4 p-12 rounded-md bg-blue-600 text-white"
+    >
+      <div className="text-5xl font-[700] p-3">Welcome</div>
+      <div className="p-6 flex flex-col gap-6">
+        <UserInput
+          dataName="email"
+          labelName="Email"
+          inputType="text"
+          {...register("dataName")}
+        />
+        <UserInput
+          dataName="password"
+          labelName="Password"
+          inputType="password"
+          {...register("password")}
+        />
+        {newUser && (
           <UserInput
-            dataName="email"
-            labelName="Email"
-            inputType="text"
-            {...register("dataName")}
-          />
-          <UserInput
-            dataName="password"
-            labelName="Password"
+            dataName="verifyPassword"
+            labelName="Verify Password"
             inputType="password"
-            {...register("password")}
+            {...register("verifyPassword")}
           />
-        </div>
-        <LoginButton newUser={newUser} />
-        <LoginLinks newUser={newUser} setNewUser={setNewUser} />
-      </form>
-    </div>
+        )}
+      </div>
+      <LoginButton newUser={newUser} />
+      <LoginLinks newUser={newUser} setNewUser={setNewUser} />
+    </form>
   );
 }

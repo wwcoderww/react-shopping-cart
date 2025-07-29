@@ -10,7 +10,7 @@ export default function Layout() {
       <AuthProvider>
         <CartProvider>
           <NavBar />
-          <div className="flex-1 overflow-y-scroll bg-blue-500 w-full h-full">
+          <div className="flex-1 overflow-y-scroll bg-blue-500 w-full h-full flex">
             <Outlet />
           </div>
         </CartProvider>
