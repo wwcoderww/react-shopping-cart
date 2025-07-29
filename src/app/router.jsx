@@ -2,7 +2,7 @@ import { QueryClient } from "@tanstack/react-query";
 import { createBrowserRouter } from "react-router-dom";
 import Layout from "./routes/Layout";
 import Checkout from "./routes/Checkout";
-import Login from "./routes/Login";
+import Account from "./routes/Account";
 import Products from "./routes/Products";
 import Welcome from "./routes/Welcome";
 
@@ -14,7 +14,7 @@ export const router = createBrowserRouter([
       { element: <Welcome />, path: "/home" },
       { element: <Products />, path: "/products" },
       { element: <Checkout />, path: "/checkout" },
-      { element: <Login />, path: "/login" },
+      { element: <Account />, path: "/account" },
     ],
   },
 ]);

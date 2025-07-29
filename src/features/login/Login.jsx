@@ -1,10 +1,10 @@
 import { useForm } from "react-hook-form";
-import { LoginButton } from "./../../features/login/LoginButton";
-import { LoginLinks } from "./../../features/login/LoginLinks";
-import { UserInput } from "./../../features/login/UserInput";
+import { LoginButton } from "./components/LoginButton";
+import { LoginLinks } from "./components/LoginLinks";
+import { UserInput } from "./components/UserInput";
 import React, { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../firebase/firebase";
+import { auth } from "../../app/firebase/firebase";
 
 export default function Login() {
   const [newUser, setNewUser] = useState(false);

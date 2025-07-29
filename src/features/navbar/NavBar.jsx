@@ -18,7 +18,7 @@ export default function NavBar() {
         <Links to={"./products"} msg={"Products"} />
         <Links to={"./checkout"} msg={"Checkout"} />
       </ul>
-      <Link to={"./login"} className="flex items-center">
+      <Link to={"./account"} className="flex items-center">
         <FaRegCircleUser className="text-4xl " />
       </Link>
     </div>
