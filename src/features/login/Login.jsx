@@ -1,39 +1,30 @@
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import { login } from "../../app/firebase/firebase";
 import { LoginButton } from "./components/LoginButton";
 import { LoginLinks } from "./components/LoginLinks";
 import { UserInput } from "./components/UserInput";
-import React, { useState } from "react";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../app/firebase/firebase";
 
 export default function Login() {
   const [newUser, setNewUser] = useState(false);
   const { register, getValues, handleSubmit } = useForm();
 
-  async function submitForm(e) {
-    // e.preventDefault()
-    try {
-      await signInWithEmailAndPassword(
-        auth,
-        getValues().dataName,
-        getValues().password
-      );
-      alert("Success");
-    } catch (error) {
-      console.log(error);
-    }
+  async function submitForm() {
+    const { email, password } = getValues();
+    await login(email, password);
   }
 
   return (
-    <div className="w-full h-full flex">
+    <div className="w-full h-full flex ">
       <form
         onSubmit={handleSubmit(submitForm)}
-        className="flex flex-col mx-auto my-auto items-center"
+        className="flex flex-col mx-auto my-auto items-center border-3 p-12 rounded-md bg-blue-600 text-white"
       >
+        <div className="text-5xl font-[700] p-3">Welcome</div>
         <div className="p-6 flex flex-col gap-6">
           <UserInput
-            dataName="username"
-            labelName="Username"
+            dataName="email"
+            labelName="Email"
             inputType="text"
             {...register("dataName")}
           />

@@ -1,17 +1,17 @@
 # React Shopping Cart
 
-## React
+## createPortal
 
-## Javascript
+## Firebase
 
-## Tailwind
+## React + JS
 
-## React-Router
-
-## useContext
+## React-hook-form
 
 ## React-Query
 
-## createPortal
+## React-Router
 
-## JWT
+## Tailwind
+
+## useContext
