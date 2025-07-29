@@ -1,7 +1,7 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
-import { CartProvider } from "../../hooks/CartContext";
 import NavBar from "../../features/navbar/NavBar";
+import { CartProvider } from "../../contexts/CartContext";
 
 export default function Layout() {
   return (

@@ -1,14 +1,15 @@
 import React from "react";
 import { FaPlus, FaMinus } from "react-icons/fa";
-import { useCart } from "../../../hooks/CartContext";
+import { useCart } from "../../../contexts/CartContext";
 
 export default function ItemInput({ item }) {
   const { updateCart, cart } = useCart();
+  // If Item is in cart return item
   const cartItem = cart.find((cartItem) => cartItem.title === item.title);
 
   function handleAdd(e, amount) {
     e.stopPropagation();
-    updateCart(item, amount);
+    updateCart(cartItem || item, amount);
   }
 
   return (

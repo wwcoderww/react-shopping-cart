@@ -1,11 +1,10 @@
 import React from "react";
-import { useCart } from "../hooks/CartContext";
 import { FaPlus, FaMinus } from "react-icons/fa";
+import { useCart } from "../contexts/CartContext";
 
 export default function BtnAddDel({ item }) {
   const { updateCart } = useCart();
   const quantity = item?.quantity;
-  console.log(item.quantity);
   return (
     <div className="flex flex-col justify-center gap-2 text-center text-6xl px-3">
       <FaPlus

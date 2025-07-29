@@ -38,7 +38,6 @@ function CartProvider({ children }) {
       setCart(newCart);
       localStorage.setItem("cart", JSON.stringify(newCart));
     }
-    console.log(cart);
   }
 
   return (

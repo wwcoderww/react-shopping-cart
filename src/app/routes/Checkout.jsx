@@ -1,8 +1,8 @@
 import { Payment } from "./../../features/checkout/Payment";
 import React from "react";
-import { useCart } from "../../hooks/CartContext";
 import ItemList from "../../features/checkout/ItemList";
 import Summary from "../../features/checkout/Summary";
+import { useCart } from "../../contexts/CartContext";
 
 export default function ItemContainer() {
   const { cart, updateCart } = useCart();
