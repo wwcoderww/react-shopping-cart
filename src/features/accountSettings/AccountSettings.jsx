@@ -1,13 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
+import { useAuth } from "../../contexts/AuthContext";
+import ChangeEmail from "./ChangeEmail";
+import ChangeName from "./ChangeName";
+import ChangePassword from "./ChangePassword";
+import ChangePhoto from "./ChangePhoto";
+import { SignOutBtn } from "./components/SignOutBtn";
 
 export default function AccountSettings() {
+  const [photoType, setPhotoType] = useState("upload");
+  const { currentUser } = useAuth();
+  console.log(currentUser);
   return (
-    <div className="">
-      <div>Display Name, Set</div>
-      <div>Photo ID</div>
-      <div>Email, Confirm Email, Set</div>
-      <div>Password, Confirm Password, Set</div>
-      <div>Sign Out, Red button</div>
+    <div className="mx-auto my-auto">
+      <ChangeName />
+      <ChangePhoto setPhotoType={setPhotoType} />
+      <ChangeEmail />
+      <ChangePassword />
+      <SignOutBtn />
     </div>
   );
 }
