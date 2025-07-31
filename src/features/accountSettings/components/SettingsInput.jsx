@@ -1,5 +1,20 @@
 import React from "react";
+import { useAuth } from "../../../contexts/AuthContext";
 
-export default function SettingsInput({ inputType, ...register }) {
-  return <input type={inputType} {...register} className="bg-white" />;
+export default function SettingsInput({
+  inputType,
+  defaultValue,
+  ...register
+}) {
+  const { currentUser } = useAuth();
+
+  return (
+    <input
+      type={inputType}
+      {...register}
+      className="bg-white outline-0 rounded-md"
+      defaultValue={currentUser?.[defaultValue]}
+      required
+    />
+  );
 }

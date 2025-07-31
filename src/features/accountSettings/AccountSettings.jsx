@@ -11,7 +11,7 @@ export default function AccountSettings() {
   const { currentUser } = useAuth();
   console.log(currentUser);
   return (
-    <div className="mx-auto my-auto">
+    <div className="mx-auto my-auto border-2 px-4 py-12 rounded-lg">
       <ChangeName />
       <ChangePhoto setPhotoType={setPhotoType} />
       <ChangeEmail />

@@ -1,5 +1,14 @@
 import React from "react";
 import { logOut } from "../../../app/firebase/firebase";
 export function SignOutBtn() {
-  return <button onClick={logOut}>Sign Out, Red button</button>;
+  return (
+    <div className="flex">
+      <button
+        onClick={logOut}
+        className="mx-auto border-2 p-2 bg-red-500 rounded-xl my-8 hover:cursor-pointer"
+      >
+        Sign Out
+      </button>
+    </div>
+  );
 }

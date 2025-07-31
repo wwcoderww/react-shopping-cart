@@ -9,7 +9,8 @@ export default function ChangePassword() {
     <SettingsDiv>
       <SettingsLabel dataName="password" message="Password" />
       <SettingsInput inputType="password" />
-      <SettingsBtnSet />
+      <label htmlFor="confirmPassword">Confirm</label>
+      <SettingsInput inputType="confirmPassword" />
     </SettingsDiv>
   );
 }

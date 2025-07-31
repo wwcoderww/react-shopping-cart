@@ -1,23 +1,28 @@
 import React from "react";
-import SettingsBtnSet from "./components/SettingsBtnSet";
-import SettingsLabel from "./components/SettingsLabel";
-import SettingsInput from "./components/SettingsInput";
-import SettingsDiv from "./components/SettingsDiv";
 import { useForm } from "react-hook-form";
+import changeName from "./api/useChangeName";
+import SettingsDiv from "./components/SettingsDiv";
+import SettingsInput from "./components/SettingsInput";
+import SettingsLabel from "./components/SettingsLabel";
 
 export default function ChangeName() {
   // Make into compound component
-  const { register, handleSubmit, getValues } = useForm();
+  const { register, handleSubmit, getValues, reset } = useForm();
 
-  function handleForm() {
-    console.log(getValues());
+  async function handleForm() {
+    const newName = getValues().displayName;
+    await changeName(newName);
+    reset();
   }
 
   return (
     <SettingsDiv handleSubmit={handleSubmit(handleForm)}>
       <SettingsLabel dataName="displayName" message="Display Name" />
-      <SettingsInput inputType="text" {...register("displayName")} />
-      <SettingsBtnSet />
+      <SettingsInput
+        inputType="text"
+        defaultValue="displayName"
+        {...register("displayName")}
+      />
     </SettingsDiv>
   );
 }

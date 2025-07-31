@@ -19,7 +19,6 @@ export default function ChangePhoto({ setPhotoType }) {
         <option value="url">url</option>
       </select>
       <SettingsInput inputType="text" />
-      <SettingsBtnSet />
     </SettingsDiv>
   );
 }
