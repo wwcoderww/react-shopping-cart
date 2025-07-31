@@ -1,5 +1,5 @@
 import React from "react";
-import { useAuth } from "../../../contexts/AuthContext";
+import { useAuth } from "../../../../contexts/AuthContext";
 
 export default function SettingsInput({
   inputType,
@@ -12,7 +12,7 @@ export default function SettingsInput({
     <input
       type={inputType}
       {...register}
-      className="bg-white outline-0 rounded-md"
+      className="bg-white outline-0 rounded-md px-1"
       defaultValue={currentUser?.[defaultValue]}
       required
     />

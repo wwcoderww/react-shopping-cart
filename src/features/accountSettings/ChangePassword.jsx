@@ -1,8 +1,7 @@
 import React from "react";
-import SettingsBtnSet from "./components/SettingsBtnSet";
-import SettingsLabel from "./components/SettingsLabel";
-import SettingsInput from "./components/SettingsInput";
-import SettingsDiv from "./components/SettingsDiv";
+import SettingsLabel from "./components/accountInformation/SettingsLabel";
+import SettingsInput from "./components/accountInformation/SettingsInput";
+import SettingsDiv from "./components/accountInformation/SettingsDiv";
 
 export default function ChangePassword() {
   return (

@@ -1,22 +1,23 @@
 import React, { useState } from "react";
+import AccountInformation from "./components/AccountInformation";
+import AccountSignOut from "./components/AccountSignOut";
+import SettingsNav from "./components/nav/SettingsNav";
+//Testing Below
 import { useAuth } from "../../contexts/AuthContext";
-import ChangeEmail from "./ChangeEmail";
-import ChangeName from "./ChangeName";
-import ChangePassword from "./ChangePassword";
-import ChangePhoto from "./ChangePhoto";
-import { SignOutBtn } from "./components/SignOutBtn";
+//Testing Above
 
 export default function AccountSettings() {
-  const [photoType, setPhotoType] = useState("upload");
+  const [openTab, setOpenTab] = useState("none");
+  //Testing Below
   const { currentUser } = useAuth();
   console.log(currentUser);
+  //Testing Above
+
   return (
-    <div className="mx-auto my-auto border-2 px-4 py-12 rounded-lg">
-      <ChangeName />
-      <ChangePhoto setPhotoType={setPhotoType} />
-      <ChangeEmail />
-      <ChangePassword />
-      <SignOutBtn />
+    <div className="flex w-full h-full">
+      <SettingsNav setOpenTab={setOpenTab} />
+      {openTab === "info" && <AccountInformation />}
+      {openTab === "signout" && <AccountSignOut />}
     </div>
   );
 }

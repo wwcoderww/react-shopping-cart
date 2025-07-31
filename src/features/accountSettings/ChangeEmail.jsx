@@ -1,9 +1,9 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import changeEmail from "./api/useChangeEmail";
-import SettingsDiv from "./components/SettingsDiv";
-import SettingsInput from "./components/SettingsInput";
-import SettingsLabel from "./components/SettingsLabel";
+import SettingsDiv from "./components/accountInformation/SettingsDiv";
+import SettingsInput from "./components/accountInformation/SettingsInput";
+import SettingsLabel from "./components/accountInformation/SettingsLabel";
 
 export default function ChangeEmail() {
   const { register, handleSubmit, getValues, reset } = useForm();
@@ -15,7 +15,7 @@ export default function ChangeEmail() {
   }
   return (
     <SettingsDiv handleSubmit={handleSubmit(handleForm)}>
-      <SettingsLabel dataName="email" message="Email" />
+      <SettingsLabel dataName="email" message="Email Address" />
       <SettingsInput
         inputType="email"
         defaultValue="email"

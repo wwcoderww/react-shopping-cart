@@ -1,8 +1,7 @@
 import React from "react";
-import SettingsBtnSet from "./components/SettingsBtnSet";
-import SettingsInput from "./components/SettingsInput";
-import SettingsLabel from "./components/SettingsLabel";
-import SettingsDiv from "./components/SettingsDiv";
+import SettingsDiv from "./components/accountInformation/SettingsDiv";
+import SettingsInput from "./components/accountInformation/SettingsInput";
+import SettingsLabel from "./components/accountInformation/SettingsLabel";
 
 export default function ChangePhoto({ setPhotoType }) {
   return (
@@ -12,6 +11,7 @@ export default function ChangePhoto({ setPhotoType }) {
         name="photoType"
         id="photoType"
         onChange={(e) => setPhotoType(e.target.value)}
+        className="text-center"
       >
         <option value="upload" defaultChecked>
           upload

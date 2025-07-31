@@ -1,6 +1,6 @@
 import React from "react";
 import { logOut } from "../../../app/firebase/firebase";
-export function SignOutBtn() {
+export default function SignOutBtn() {
   return (
     <div className="flex">
       <button
