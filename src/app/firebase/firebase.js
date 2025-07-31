@@ -13,15 +13,6 @@ const firebaseConfig = {
   // ... other values from Firebase console
 };
 
-async function login(email, password) {
-  try {
-    await signInWithEmailAndPassword(auth, email, password);
-    alert("Success");
-  } catch (error) {
-    console.log(error);
-  }
-}
-
 function createUser(email, password) {
   createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {

@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { createUser, login } from "../../app/firebase/firebase";
 import { LoginButton } from "./components/LoginButton";
 import { LoginLinks } from "./components/LoginLinks";
 import { UserInput } from "./components/UserInput";
+import apiLogin from "./api/useLogin";
+import apiCreateUser from "./api/useCreateUser";
 
 export default function Login() {
   const [newUser, setNewUser] = useState(false);
@@ -13,9 +14,9 @@ export default function Login() {
     const { email, password } = getValues();
     if (newUser) {
       console.log(email, password);
-      createUser(email, password);
+      apiCreateUser(email, password);
     } else {
-      await login(email, password);
+      await apiLogin(email, password);
     }
   }
 
