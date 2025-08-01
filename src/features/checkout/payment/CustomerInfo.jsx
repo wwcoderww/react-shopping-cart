@@ -1,19 +1,35 @@
 import React from "react";
 import { FormInput } from "./FormInput";
 
-export function CustomerInfo() {
+export function CustomerInfo({ register }) {
   return (
     <>
-      <div className="flex justify-between">
-        <FormInput data="firstName" label="First name" />
-        <FormInput data="lastName" label="Last name" />
+      <div className="flex justify-between gap-4">
+        <FormInput
+          data="firstName"
+          label="First name"
+          {...register("firstName")}
+        />
+        <FormInput
+          data="lastName"
+          label="Last name"
+          {...register("lastName")}
+        />
       </div>
-      <FormInput data="country" label="Country" />
-      <FormInput data="addyOne" label="Address line 1" />
-      <FormInput data="addyTwo" label="Address line 2" />
-      <div className="flex justify-between">
-        <FormInput data="postal" label="Postal code" />
-        <FormInput data="city" label="City" />
+      <FormInput data="country" label="Country" {...register("country")} />
+      <FormInput
+        data="addyOne"
+        label="Address line 1"
+        {...register("addyOne")}
+      />
+      <FormInput
+        data="addyTwo"
+        label="Address line 2"
+        {...register("addyTwo")}
+      />
+      <div className="flex justify-between gap-4">
+        <FormInput data="postal" label="Postal code" {...register("postal")} />
+        <FormInput data="city" label="City" {...register("city")} />
       </div>
       <div className="flex gap-2">
         <input type="checkbox" defaultChecked />
