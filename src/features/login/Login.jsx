@@ -14,7 +14,7 @@ export default function Login() {
     const { email, password } = getValues();
     if (newUser) {
       console.log(email, password);
-      apiCreateUser(email, password);
+      await apiCreateUser(email, password);
     } else {
       await apiLogin(email, password);
     }

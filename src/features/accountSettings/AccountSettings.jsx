@@ -11,11 +11,12 @@ export default function AccountSettings() {
   //Testing Below
   const { currentUser } = useAuth();
   console.log(currentUser);
+  // Set up useContext
   //Testing Above
 
   return (
     <div className="flex w-full h-full">
-      <SettingsNav setOpenTab={setOpenTab} />
+      <SettingsNav setOpenTab={setOpenTab} openTab={openTab} />
       {openTab === "info" && <AccountInformation />}
       {openTab === "signout" && <AccountSignOut />}
     </div>
