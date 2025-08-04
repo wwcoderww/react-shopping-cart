@@ -11,7 +11,7 @@ export default function Welcome() {
 
   return (
     <div className="w-full h-full flex justify-center items-center">
-      <div className="text-[14rem] font-bold  text-white">{message}</div>
+      <div className="text-[7rem] font-bold  text-white">{message}</div>
     </div>
   );
 }
