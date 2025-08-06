@@ -7,20 +7,27 @@ type BtnAddDelType = {
 };
 
 export default function BtnAddDel({ item }: BtnAddDelType) {
-  const { updateCart } = useCart();
-  const quantity = item?.quantity;
+  const { cart, updateCart } = useCart();
+  const cartItem: ProductItemType | undefined = cart.find(
+    (cartItem: ProductItemType) => cartItem.title === item.title
+  );
+
   return (
     <div className="flex flex-col justify-center gap-2 text-center text-6xl px-3">
       <FaPlus
-        onClick={() => updateCart(item, 1)}
+        onClick={() => updateCart(cartItem || item, 1)}
         className=" text-blue-600 hover:cursor-pointer"
       />
-      <div className="text-4xl text-blue-800 font-bold">{quantity}</div>
-      {quantity && (
-        <FaMinus
-          onClick={() => updateCart(item, -1)}
-          className=" text-blue-600 hover:cursor-pointer"
-        />
+      {cartItem && (
+        <>
+          <div className="text-4xl text-blue-800 font-bold">
+            {cartItem.quantity}
+          </div>
+          <FaMinus
+            onClick={() => updateCart(cartItem || item, -1)}
+            className=" text-blue-600 hover:cursor-pointer"
+          />
+        </>
       )}
     </div>
   );

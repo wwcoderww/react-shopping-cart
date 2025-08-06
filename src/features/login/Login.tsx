@@ -11,12 +11,11 @@ export default function Login() {
   const { register, getValues, handleSubmit } = useForm();
 
   async function submitForm() {
-    const { email, password } = getValues();
+    const { email, password, verifyPassword } = getValues();
     if (newUser) {
-      console.log(email, password);
-      await apiCreateUser({email, password});
+      await apiCreateUser({ email, password, verifyPassword });
     } else {
-      await apiLogin({email, password});
+      await apiLogin({ email, password });
     }
   }
 
