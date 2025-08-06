@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, type MouseEvent } from "react";
 import { useForm } from "react-hook-form";
 import apiCreateUser from "./api/useCreateUser";
 import apiLogin from "./api/useLogin";
@@ -6,17 +6,35 @@ import { LoginButton } from "./components/LoginButton";
 import { LoginLinks } from "./components/LoginLinks";
 import { UserInput } from "./components/UserInput";
 
+type FormValuesType = {
+  email: string;
+  password: string;
+  verifyPassword: string;
+};
+
 export default function Login() {
   const [newUser, setNewUser] = useState<boolean>(false);
-  const { register, getValues, handleSubmit } = useForm();
+  const {
+    register,
+    reset,
+    getValues,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormValuesType>();
 
   async function submitForm() {
-    const { email, password, verifyPassword } = getValues();
+    const { email, password } = getValues();
     if (newUser) {
-      await apiCreateUser({ email, password, verifyPassword });
+      await apiCreateUser({ email, password });
     } else {
       await apiLogin({ email, password });
     }
+  }
+
+  function toggleUser(e: MouseEvent<HTMLDivElement>) {
+    e.preventDefault();
+    reset();
+    setNewUser((cur) => !cur);
   }
 
   return (
@@ -30,25 +48,45 @@ export default function Login() {
           dataName="email"
           labelName="Email"
           inputType="text"
-          {...register("email")}
+          error={errors.email?.message}
+          {...register("email", {
+            required: "Email is required",
+            pattern: {
+              value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+              message: "Invalid email address",
+            },
+          })}
         />
         <UserInput
           dataName="password"
           labelName="Password"
           inputType="password"
-          {...register("password")}
+          error={errors.password?.message}
+          {...register("password", {
+            minLength: {
+              value: 6,
+              message: "Password should be atleast 6 characters",
+            },
+            maxLength: { value: 16, message: "Max password length is 16" },
+          })}
         />
         {newUser && (
           <UserInput
             dataName="verifyPassword"
             labelName="Verify Password"
             inputType="password"
-            {...register("verifyPassword")}
+            error={errors.verifyPassword?.message}
+            {...register("verifyPassword", {
+              validate: () => {
+                const { password, verifyPassword } = getValues();
+                if (password !== verifyPassword) return "Password must match";
+              },
+            })}
           />
         )}
       </div>
       <LoginButton newUser={newUser} />
-      <LoginLinks newUser={newUser} setNewUser={setNewUser} />
+      <LoginLinks newUser={newUser} toggleUser={toggleUser} />
     </form>
   );
 }
