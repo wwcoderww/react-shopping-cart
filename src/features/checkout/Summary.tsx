@@ -15,6 +15,7 @@ export default function Summary({ cart }: SummaryType) {
   );
   const taxTotal = subTotal * 0.0825;
   const finalTotal = subTotal + taxTotal;
+
   return (
     <div className="flex flex-col text-end text-white p-8 text-2xl mt-6">
       <SummaryList cart={cart} />

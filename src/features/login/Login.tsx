@@ -32,6 +32,7 @@ export default function Login() {
       : await apiLogin(email, password);
     if (apiError) {
       setError(...apiError);
+      return;
     } else {
       navigate("/");
     }

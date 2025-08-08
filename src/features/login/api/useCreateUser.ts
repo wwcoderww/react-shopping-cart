@@ -11,14 +11,16 @@ export default async function createUser(
     // Sucess: created new account
   } catch (error: any) {
     const errorMsg = error.message;
-    console.log(error.message);
     // Email taken
-    if (errorMsg === "Firebase: Error (auth/email-already-in-use).")
+    if (error === "Firebase: Error (auth/email-already-in-use).")
       return ["email", { type: "api", message: "Email not available" }];
+    if (errorMsg === "Firebase: Error (auth/wrong-password).")
+      return ["password", { type: "api", message: "Incorrect password" }];
     // Unknown Error
     if (!errorMsg) {
       alert(`Check console for more details\n${error.message}`);
       console.log(error);
+      // console.log(errorMsg);
     }
   }
 }
