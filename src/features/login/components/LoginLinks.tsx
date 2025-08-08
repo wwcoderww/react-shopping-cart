@@ -1,6 +1,8 @@
+import type { MouseEvent } from "react";
+
 type LoginLinksType = {
   newUser: boolean;
-  toggleUser(): void;
+  toggleUser(e: MouseEvent<HTMLDivElement>): void;
 };
 
 export function LoginLinks({ newUser, toggleUser }: LoginLinksType) {

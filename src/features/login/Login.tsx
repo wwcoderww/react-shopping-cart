@@ -5,6 +5,7 @@ import apiLogin from "./api/useLogin";
 import { LoginButton } from "./components/LoginButton";
 import { LoginLinks } from "./components/LoginLinks";
 import { UserInput } from "./components/UserInput";
+import { useNavigate } from "react-router-dom";
 
 type FormValuesType = {
   email: string;
@@ -13,21 +14,26 @@ type FormValuesType = {
 };
 
 export default function Login() {
+  const navigate = useNavigate();
   const [newUser, setNewUser] = useState<boolean>(false);
   const {
     register,
     reset,
     getValues,
     handleSubmit,
+    setError,
     formState: { errors },
   } = useForm<FormValuesType>();
 
   async function submitForm() {
     const { email, password } = getValues();
-    if (newUser) {
-      await apiCreateUser({ email, password });
+    const apiError = newUser
+      ? await apiCreateUser(email, password)
+      : await apiLogin(email, password);
+    if (apiError) {
+      setError(...apiError);
     } else {
-      await apiLogin({ email, password });
+      navigate("/");
     }
   }
 

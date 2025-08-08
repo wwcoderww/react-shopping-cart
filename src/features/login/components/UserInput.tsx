@@ -24,7 +24,7 @@ export function UserInput({
         </label>
         <input type={inputType} className={InputStyle} {...register} />
       </div>
-      {error && <div className="text-red-400 text-center">{error}</div>}
+      {error && <div className="text-red-400 text-center pt-2">{error}</div>}
     </div>
   );
 }
