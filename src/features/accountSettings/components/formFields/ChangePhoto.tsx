@@ -1,6 +1,6 @@
-import SettingsDiv from "./components/accountInformation/SettingsDiv";
-import SettingsInput from "./components/accountInformation/SettingsInput";
-import SettingsLabel from "./components/accountInformation/SettingsLabel";
+import SettingsDiv from "../accountInformation/SettingsDiv";
+import SettingsInput from "../accountInformation/SettingsInput";
+import SettingsLabel from "../accountInformation/SettingsLabel";
 
 type ChangePhotoType = {
   setPhotoType(value: string): void;

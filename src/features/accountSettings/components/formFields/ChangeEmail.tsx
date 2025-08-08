@@ -1,8 +1,8 @@
 import { useForm } from "react-hook-form";
-import changeEmail from "./api/useChangeEmail";
-import SettingsDiv from "./components/accountInformation/SettingsDiv";
-import SettingsInput from "./components/accountInformation/SettingsInput";
-import SettingsLabel from "./components/accountInformation/SettingsLabel";
+import changeEmail from "../../api/useChangeEmail";
+import SettingsDiv from "../accountInformation/SettingsDiv";
+import SettingsInput from "../accountInformation/SettingsInput";
+import SettingsLabel from "../accountInformation/SettingsLabel";
 
 export default function ChangeEmail() {
   const { register, handleSubmit, getValues, reset } = useForm();

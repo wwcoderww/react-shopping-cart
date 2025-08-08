@@ -6,6 +6,7 @@ import { LoginButton } from "./components/LoginButton";
 import { LoginLinks } from "./components/LoginLinks";
 import { UserInput } from "./components/UserInput";
 import { useNavigate } from "react-router-dom";
+import { validateEmail, validatePassword } from "../../utils/ValidateForm";
 
 type FormValuesType = {
   email: string;
@@ -56,26 +57,14 @@ export default function Login() {
           labelName="Email"
           inputType="text"
           error={errors.email?.message}
-          {...register("email", {
-            required: "Email is required",
-            pattern: {
-              value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-              message: "Invalid email address",
-            },
-          })}
+          {...register("email", validateEmail)}
         />
         <UserInput
           dataName="password"
           labelName="Password"
           inputType="password"
           error={errors.password?.message}
-          {...register("password", {
-            minLength: {
-              value: 6,
-              message: "Password should be atleast 6 characters",
-            },
-            maxLength: { value: 16, message: "Max password length is 16" },
-          })}
+          {...register("password", validatePassword)}
         />
         {newUser && (
           <UserInput

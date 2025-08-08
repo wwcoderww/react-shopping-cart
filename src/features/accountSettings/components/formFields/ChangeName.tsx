@@ -1,8 +1,8 @@
 import { useForm } from "react-hook-form";
-import changeName from "./api/useChangeName";
-import SettingsDiv from "./components/accountInformation/SettingsDiv";
-import SettingsInput from "./components/accountInformation/SettingsInput";
-import SettingsLabel from "./components/accountInformation/SettingsLabel";
+import changeName from "../../api/useChangeName";
+import SettingsDiv from "../accountInformation/SettingsDiv";
+import SettingsInput from "../accountInformation/SettingsInput";
+import SettingsLabel from "../accountInformation/SettingsLabel";
 
 export default function ChangeName() {
   // Make into compound component
