@@ -7,6 +7,7 @@ export function Payment() {
   const { register, getValues, handleSubmit } = useForm();
 
   function sucessFunction() {
+    alert("Thanks");
     console.log(getValues());
   }
 

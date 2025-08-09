@@ -1,25 +1,31 @@
+import { useFormContext } from "react-hook-form";
 import { useAuth } from "../../../../contexts/AuthContext";
+import { type User } from "firebase/auth";
 
 type SettingsInputType = {
   inputType: string;
-  defaultValue?: string;
+  dataName: keyof User;
+  placeholder?: boolean;
 };
 
 export default function SettingsInput({
   inputType,
-  defaultValue,
-  ...register
+  placeholder,
+  dataName,
 }: SettingsInputType) {
-  const currentUser = useAuth().currentUser || null;
+  const { register } = useFormContext();
+  const dataNameValidate = useAuth().currentUser?.[dataName];
+  const placeHolderValidated =
+    placeholder && typeof dataNameValidate === "string"
+      ? dataNameValidate
+      : undefined;
 
   return (
     <input
       type={inputType}
-      {...register}
+      {...register(dataName)}
       className="bg-white outline-0 rounded-md px-1"
-      defaultValue={
-        currentUser ? (defaultValue as keyof typeof currentUser) : ""
-      }
+      placeholder={placeHolderValidated}
       required
     />
   );
