@@ -1,20 +1,22 @@
 import { validatePassword } from "../../../../utils/ValidateForm";
 import useChangePassword from "../../api/useChangePassword";
 import SettingsForm from "../accountInformation/SettingsForm";
-import SettingsInput from "../accountInformation/SettingsInput";
-import SettingsLabel from "../accountInformation/SettingsLabel";
 
 export default function ChangePassword() {
   return (
     <SettingsForm validateFunction={useChangePassword}>
-      <SettingsLabel dataName="password" message="Password" />
-      <SettingsInput
+      <SettingsForm.Label dataName="password" message="Password" />
+      <SettingsForm.Input
         inputType="password"
         dataName="password"
         formOptions={validatePassword}
       />
-      <SettingsLabel dataName="verifyPassword" message="Verify" />
-      <SettingsInput
+      <SettingsForm.Label
+        dataName="verifyPassword"
+        message="Verify"
+        verify={true}
+      />
+      <SettingsForm.Input
         inputType="password"
         dataName="verifyPassword"
         formOptions={validatePassword}

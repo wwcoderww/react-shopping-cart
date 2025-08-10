@@ -2,6 +2,8 @@ import { getAuth } from "firebase/auth";
 import { FormProvider, useForm, type FieldValues } from "react-hook-form";
 import { type APIErrorType } from "../../../../types/ErrorType";
 import SettingsBtnSet from "./SettingsBtnSet";
+import SettingsInput from "../accountInformation/SettingsInput";
+import SettingsLabel from "../accountInformation/SettingsLabel";
 
 type SettingsFormType = {
   children: React.ReactNode;
@@ -54,3 +56,6 @@ export default function SettingsForm({
     </FormProvider>
   );
 }
+
+SettingsForm.Input = SettingsInput;
+SettingsForm.Label = SettingsLabel;

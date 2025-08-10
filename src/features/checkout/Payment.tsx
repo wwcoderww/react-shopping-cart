@@ -14,7 +14,7 @@ export function Payment() {
   return (
     <form
       onSubmit={handleSubmit(sucessFunction)}
-      className="flex flex-col max-w-1/2 mx-auto"
+      className="flex flex-col max-w-7/12 mx-auto"
     >
       <CustomerInfo register={register} />
       <CardInfo register={register} />

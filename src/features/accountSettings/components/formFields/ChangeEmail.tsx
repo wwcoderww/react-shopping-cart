@@ -1,27 +1,27 @@
-import { useForm } from "react-hook-form";
-import changeEmail from "../../api/useChangeEmail";
-import SettingsDiv from "../accountInformation/SettingsDiv";
-import SettingsInput from "../accountInformation/SettingsInput";
-import SettingsLabel from "../accountInformation/SettingsLabel";
+import { validateEmail } from "../../../../utils/ValidateForm";
+import useChangeEmail from "../../api/useChangeEmail";
+import SettingsForm from "../accountInformation/SettingsForm";
 
 export default function ChangeEmail() {
-  const { register, handleSubmit, getValues, reset } = useForm();
-
-  async function handleForm() {
-    const { newEmail } = getValues();
-    await changeEmail(newEmail);
-    reset();
-  }
   return (
-    <SettingsDiv handleSubmit={handleSubmit(handleForm)}>
-      <SettingsLabel dataName="email" message="Email Address" />
-      <SettingsInput
+    <SettingsForm validateFunction={useChangeEmail}>
+      <SettingsForm.Label dataName="email" message="New Email" />
+      <SettingsForm.Input
         inputType="email"
-        defaultValue="email"
-        {...register("newEmail")}
+        dataName="email"
+        formOptions={validateEmail}
+        placeholder={true}
       />
-      <label htmlFor="confirmEmail">Confirm</label>
-      <SettingsInput inputType="email" {...register("confirmEmail")} />
-    </SettingsDiv>
+      <SettingsForm.Label
+        dataName="verifyEmail"
+        message="Verify"
+        verify={true}
+      />
+      <SettingsForm.Input
+        inputType="email"
+        dataName="verifyEmail"
+        formOptions={validateEmail}
+      />
+    </SettingsForm>
   );
 }

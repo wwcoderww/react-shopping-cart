@@ -1,14 +1,12 @@
 import { validateDisplayName } from "../../../../utils/ValidateForm";
 import useChangeName from "../../api/useChangeName";
 import SettingsForm from "../accountInformation/SettingsForm";
-import SettingsInput from "../accountInformation/SettingsInput";
-import SettingsLabel from "../accountInformation/SettingsLabel";
 
 export default function ChangeName() {
   return (
     <SettingsForm validateFunction={useChangeName}>
-      <SettingsLabel dataName="displayName" message="Display Name" />
-      <SettingsInput
+      <SettingsForm.Label dataName="displayName" message="Display Name" />
+      <SettingsForm.Input
         inputType="text"
         dataName="displayName"
         placeholder={true}
