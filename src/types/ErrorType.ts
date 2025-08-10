@@ -7,7 +7,9 @@ type ErrorNewUserType = [
 type DisplayNameType = [group: "displayName", options: ErrorOptions];
 
 type APIErrorType = {
-  error: unknown;
+  error: {
+    message: string;
+  };
   setError?: [group: string, options: ErrorOptions];
 };
 

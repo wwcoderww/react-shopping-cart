@@ -1,11 +1,11 @@
-import SettingsError from "./SettingsError";
 import { useFormContext } from "react-hook-form";
 import { useAuth } from "../../../../contexts/AuthContext";
-import { type User } from "firebase/auth";
+import SettingsError from "./SettingsError";
+import type { User } from "firebase/auth";
 // Prop Types
 type SettingsInputType = {
   inputType: string;
-  dataName: keyof User;
+  dataName: keyof User | string;
   placeholder?: boolean;
   formOptions?: {};
 };
@@ -19,15 +19,19 @@ export default function SettingsInput({
 }: SettingsInputType) {
   // Variables
   const { register, formState } = useFormContext();
-  const dataNameValidate = useAuth().currentUser?.[dataName];
+  let placeHolderValidated;
+  if (placeholder) {
+    const { currentUser } = useAuth();
+    const dataNameValidate = (currentUser as any)?.[dataName];
+    // Verify User.'X'key exist
+    placeHolderValidated =
+      placeholder && typeof dataNameValidate === "string"
+        ? dataNameValidate
+        : undefined;
+  }
   // TSX Verify - String for error message
   const verifyError = formState.errors?.[dataName]?.message;
   const error = typeof verifyError === "string" ? verifyError : undefined;
-  // Verify User.'X'key exist
-  const placeHolderValidated =
-    placeholder && typeof dataNameValidate === "string"
-      ? dataNameValidate
-      : undefined;
   // Input Style. Seperated to include `` & errors
   const InputStyle = `bg-white outline-0 rounded-md px-1 h-8 ${
     error && `border-red-600 border-1 rounded-b-sm`

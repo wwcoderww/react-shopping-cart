@@ -9,7 +9,7 @@ const validateEmail = {
 const validatePassword = {
   minLength: {
     value: 6,
-    message: "Password should be atleast 6 characters",
+    message: "Min 6 characters",
   },
   maxLength: { value: 16, message: "Max length is 16" },
 };

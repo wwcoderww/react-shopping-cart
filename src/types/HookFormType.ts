@@ -4,4 +4,10 @@ type HookFormType = {
   register: UseFormRegister<FieldValues>;
 };
 
-export { type HookFormType };
+type AccountSettingsDataType = {
+  displayName?: string;
+  password?: string;
+  verifyPassword?: string;
+};
+
+export { type HookFormType, type AccountSettingsDataType };

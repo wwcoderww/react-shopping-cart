@@ -30,7 +30,7 @@ export default function SettingsForm({
         setError(...errorCheck.setError);
       } else {
         // If no return message is set
-        alert(errorCheck);
+        alert(errorCheck.error.message);
         console.log(errorCheck);
       }
       return;

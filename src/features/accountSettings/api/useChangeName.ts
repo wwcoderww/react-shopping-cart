@@ -7,7 +7,6 @@ export default async function useChangeName(
   values: FieldValues
 ): Promise<APIErrorType | void> {
   const { displayName } = values;
-  // Verify - JSX - User
   try {
     await updateProfile(user, {
       displayName,
