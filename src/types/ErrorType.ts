@@ -4,5 +4,11 @@ type ErrorNewUserType = [
   group: "email" | "password" | "verifyPassword",
   options: ErrorOptions
 ];
+type DisplayNameType = [group: "displayName", options: ErrorOptions];
 
-export { type ErrorNewUserType };
+type APIErrorType = {
+  error: unknown;
+  setError?: [group: string, options: ErrorOptions];
+};
+
+export { type ErrorNewUserType, type DisplayNameType, type APIErrorType };

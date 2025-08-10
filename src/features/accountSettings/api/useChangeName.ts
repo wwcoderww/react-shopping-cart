@@ -1,18 +1,22 @@
-import { getAuth, updateProfile } from "firebase/auth";
+import { updateProfile, type User } from "firebase/auth";
+import type { APIErrorType } from "../../../types/ErrorType";
+import type { FieldValues } from "react-hook-form";
 
-export default async function useChangeName(newName: string) {
-  const auth = getAuth();
-  const user = auth.currentUser;
-// Check if user exist
-  if (!user) return;
+export default async function useChangeName(
+  user: User,
+  values: FieldValues
+): Promise<APIErrorType | void> {
+  const { displayName } = values;
+  // Verify - JSX - User
   try {
     await updateProfile(user, {
-      displayName: newName,
+      displayName,
     });
-    // Sucess
-    alert("sucess");
+    // No Errors
   } catch (error) {
-    // Failed
-    console.log(error);
+    // Known Errors
+
+    // Unknown Error
+    return { error };
   }
 }

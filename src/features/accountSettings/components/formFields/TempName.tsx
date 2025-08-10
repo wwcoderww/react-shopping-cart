@@ -1,20 +1,18 @@
+import { validateDisplayName } from "../../../../utils/ValidateForm";
+import useChangeName from "../../api/useChangeName";
 import SettingsForm from "../accountInformation/SettingsForm";
 import SettingsInput from "../accountInformation/SettingsInput";
 import SettingsLabel from "../accountInformation/SettingsLabel";
 
 export default function TempChangeName() {
-  function submitForm(data: any) {
-    alert("WOW");
-    console.log(data);
-  }
-
   return (
-    <SettingsForm onSubmit={submitForm}>
+    <SettingsForm validateFunction={useChangeName}>
       <SettingsLabel dataName="displayName" message="Display Name" />
       <SettingsInput
         inputType="text"
         dataName="displayName"
         placeholder={true}
+        formOptions={validateDisplayName}
       />
     </SettingsForm>
   );

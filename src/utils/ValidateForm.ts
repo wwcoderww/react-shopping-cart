@@ -11,7 +11,11 @@ const validatePassword = {
     value: 6,
     message: "Password should be atleast 6 characters",
   },
-  maxLength: { value: 16, message: "Max password length is 16" },
+  maxLength: { value: 16, message: "Max length is 16" },
 };
 
-export { validateEmail, validatePassword };
+const validateDisplayName = {
+  maxLength: { value: 16, message: "Max length is 16" },
+};
+
+export { validateEmail, validatePassword, validateDisplayName };
