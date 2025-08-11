@@ -1,6 +1,6 @@
-import { validateDisplayName } from "../../../../utils/ValidateForm";
-import useChangeName from "../../api/useChangeName";
-import SettingsForm from "../accountInformation/SettingsForm";
+import { validateDisplayName } from "../../../../../utils/ValidateForm";
+import useChangeName from "../../../api/useChangeName";
+import SettingsForm from "../SettingsForm";
 
 export default function ChangeName() {
   return (

@@ -1,6 +1,6 @@
-import { validatePassword } from "../../../../utils/ValidateForm";
-import useChangePassword from "../../api/useChangePassword";
-import SettingsForm from "../accountInformation/SettingsForm";
+import { validatePassword } from "../../../../../utils/ValidateForm";
+import useChangePassword from "../../../api/useChangePassword";
+import SettingsForm from "../SettingsForm";
 
 export default function ChangePassword() {
   return (

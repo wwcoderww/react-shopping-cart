@@ -1,8 +1,8 @@
 import { useState } from "react";
-import ChangeEmail from "./formFields/ChangeEmail";
-import ChangeName from "./formFields/ChangeName";
-import ChangePassword from "./formFields/ChangePassword";
-import ChangePhoto from "./formFields/ChangePhoto";
+import ChangeEmail from "./accountInformation/formFields/ChangeEmail";
+import ChangeName from "./accountInformation/formFields/ChangeName";
+import ChangePassword from "./accountInformation/formFields/ChangePassword";
+import ChangePhoto from "./accountInformation/formFields/ChangePhoto";
 
 export default function AccountInformation() {
   const [photoType, setPhotoType] = useState<string>("upload");

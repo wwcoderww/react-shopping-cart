@@ -1,5 +1,5 @@
 import { useFormContext } from "react-hook-form";
-import { useAuth } from "../../../../contexts/AuthContext";
+import { useAuth } from "../../../../../contexts/AuthContext";
 import SettingsError from "./SettingsError";
 import type { User } from "firebase/auth";
 // Prop Types

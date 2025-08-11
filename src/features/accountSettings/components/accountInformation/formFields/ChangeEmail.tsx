@@ -1,6 +1,6 @@
-import { validateEmail } from "../../../../utils/ValidateForm";
-import useChangeEmail from "../../api/useChangeEmail";
-import SettingsForm from "../accountInformation/SettingsForm";
+import { validateEmail } from "../../../../../utils/ValidateForm";
+import useChangeEmail from "../../../api/useChangeEmail";
+import SettingsForm from "../SettingsForm";
 
 export default function ChangeEmail() {
   return (

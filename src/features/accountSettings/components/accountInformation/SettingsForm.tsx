@@ -1,9 +1,9 @@
 import { getAuth } from "firebase/auth";
 import { FormProvider, useForm, type FieldValues } from "react-hook-form";
 import { type APIErrorType } from "../../../../types/ErrorType";
-import SettingsBtnSet from "./SettingsBtnSet";
-import SettingsInput from "../accountInformation/SettingsInput";
-import SettingsLabel from "../accountInformation/SettingsLabel";
+import SettingsBtnSet from "./components/SettingsBtnSet";
+import SettingsInput from "./components/SettingsInput";
+import SettingsLabel from "./components/SettingsLabel";
 
 type SettingsFormType = {
   children: React.ReactNode;
