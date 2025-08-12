@@ -4,16 +4,19 @@ import type { ProductItemType } from "../types/ProductItemType";
 
 type BtnAddDelType = {
   item: ProductItemType;
+  style?: string;
 };
 
-export default function BtnAddDel({ item }: BtnAddDelType) {
+export default function BtnAddDel({ item, style }: BtnAddDelType) {
   const { cart, updateCart } = useCart();
   const cartItem: ProductItemType | undefined = cart.find(
     (cartItem: ProductItemType) => cartItem.title === item.title
   );
 
+  const ContainerStyle = `flex flex-col justify-center gap-2 text-center text-6xl px-3 ${style}`;
+
   return (
-    <div className="flex flex-col justify-center gap-2 text-center text-6xl px-3">
+    <div className={ContainerStyle}>
       <FaPlus
         onClick={() => updateCart(cartItem || item, 1)}
         className=" text-blue-600 hover:cursor-pointer"

@@ -16,7 +16,7 @@ function Links({ to, msg }: LinksType) {
 
 export default function NavBar() {
   return (
-    <div className="flex py-1 pr-2 text-white bg-blue-600 ">
+    <div className="py-1 pr-2 text-white bg-blue-600 lg:flex hidden">
       <ul className="flex justify-evenly flex-1 text-5xl">
         <Links to={"./"} msg={"Home"} />
         <Links to={"./products"} msg={"Products"} />

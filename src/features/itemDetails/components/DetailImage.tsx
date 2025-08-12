@@ -3,5 +3,5 @@ type DetailImageType = {
 };
 
 export default function DetailImage({ image }: DetailImageType) {
-  return <img src={image} className="w-100 rounded-l-lg" />;
+  return <img src={image} className="w-100 h-max-6/12 rounded-l-lg" />;
 }
