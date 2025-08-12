@@ -1,7 +1,7 @@
 import { getAuth } from "firebase/auth";
 import { FormProvider, useForm, type FieldValues } from "react-hook-form";
 import { type APIErrorType } from "../../../../types/ErrorType";
-import SettingsBtnSet from "./components/SettingsBtnSet";
+import SettingsDiv from "./components/SettingsDiv";
 import SettingsInput from "./components/SettingsInput";
 import SettingsLabel from "./components/SettingsLabel";
 
@@ -46,13 +46,9 @@ export default function SettingsForm({
 
   return (
     <FormProvider {...methods}>
-      <form
-        onSubmit={methods.handleSubmit(finalForm)}
-        className="flex gap-4 p-2.5 text-xl"
-      >
+      <SettingsDiv handleSubmit={methods.handleSubmit(finalForm)}>
         {children}
-        <SettingsBtnSet />
-      </form>
+      </SettingsDiv>
     </FormProvider>
   );
 }

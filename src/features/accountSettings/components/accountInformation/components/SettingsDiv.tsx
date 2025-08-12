@@ -11,7 +11,10 @@ export default function SettingsDiv({
   handleSubmit,
 }: SettingsDivType) {
   return (
-    <form onSubmit={handleSubmit} className="flex gap-4 p-2.5 text-xl">
+    <form
+      onSubmit={handleSubmit}
+      className="xl:gap-4 p-2.5 text-xl flex flex-col xl:flex-row pb-8 xl:pb-0 border-b-2 border-dashed xl:border-0"
+    >
       {children}
       <SettingsBtnSet />
     </form>
