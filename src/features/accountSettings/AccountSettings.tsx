@@ -15,7 +15,7 @@ export default function AccountSettings() {
   //Testing Above
 
   return (
-    <div className="flex w-full h-full">
+    <div className="flex flex-col w-full h-full sm:flex-row">
       <SettingsNav setOpenTab={setOpenTab} openTab={openTab} />
       {openTab === "info" && <AccountInformation />}
       {openTab === "signout" && <AccountSignOut />}

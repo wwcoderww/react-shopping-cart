@@ -1,7 +1,11 @@
-import React from "react";
 import SettingsNavLink from "./SettingsNavLink";
 
-export default function SettingsNav({ setOpenTab, openTab }) {
+type SettingsNavType = {
+  setOpenTab: React.Dispatch<React.SetStateAction<string>>;
+  openTab: string;
+};
+
+export default function SettingsNav({ setOpenTab, openTab }: SettingsNavType) {
   return (
     <div className="flex flex-col text-2xl border-r-1">
       <SettingsNavLink

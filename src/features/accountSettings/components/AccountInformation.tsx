@@ -8,7 +8,7 @@ export default function AccountInformation() {
   const [photoType, setPhotoType] = useState<string>("upload");
 
   return (
-    <div className="my-auto border-8 px-4 py-12 rounded-lg mx-auto border-white">
+    <div className="xl:my-auto border-8 px-4 sm:py-6 rounded-lg mx-auto border-white my-12 shadow-sm shadow-black overflow-scroll">
       <ChangeName />
       {/* <ChangePhoto setPhotoType={setPhotoType} /> */}
       <ChangeEmail />
