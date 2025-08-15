@@ -9,7 +9,7 @@ export function SearchBar() {
       <input
         type="text"
         placeholder="Search"
-        className="p-2 flex-1 outline-0 "
+        className="p-2 outline-0 w-40 sm:w-full"
         onChange={(e) => updateSearch(e.target.value, undefined)}
       />
     </div>

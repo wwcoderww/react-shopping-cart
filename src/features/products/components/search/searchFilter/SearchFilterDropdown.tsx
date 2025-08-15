@@ -9,7 +9,7 @@ export default function SearchFilterDropdown() {
   if (!isOpen) return;
 
   return (
-    <div className="absolute bg-gray-100 rounded-sm mt-1 p-1">
+    <div className="absolute bg-gray-100 rounded-sm mt-0.5 p-1">
       <SearchOption title={"All Items"} defaultValue={true} />
       {itemCatagories.map((item) => (
         <SearchOption title={item} key={item} />

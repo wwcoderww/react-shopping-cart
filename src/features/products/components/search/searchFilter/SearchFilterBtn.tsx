@@ -6,7 +6,7 @@ export default function SearchFilterBtn() {
   return (
     <button
       onClick={() => setIsOpen((cur) => !cur)}
-      className="bg-red-500 w-15 rounded-lg hover:cursor-pointer"
+      className="bg-gray-300 w-15 rounded-lg hover:cursor-pointer"
     >
       Filter
     </button>
