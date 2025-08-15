@@ -1,13 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
-import React, { useState } from "react";
-import ProductList from "../../features/products/ProductList";
-import getProducts from "../../features/products/api/getProducts";
 import LoadingSpinner from "../../components/LoadingSpinner";
-import { SearchBar } from "../../features/products/SearchBar";
-
+import { SearchProvider } from "../../contexts/SearchContext";
+import ProductList from "../../features/products/ProductList";
+import Search from "../../features/products/Search";
+import getProducts from "../../features/products/api/getProducts";
+// Wrap code in context for prop drilling and access item catagories in 'SearchFilter'
+// // Can delete useEffect by adding a state inside context for displaying items
 export default function Products() {
-  const [search, setSearch] = useState<string>("");
-  // Store data inside queryKey: allItems
+  // Store Data inside queryKey: allItems
   const { isLoading, data, error } = useQuery({
     queryKey: ["allItems"],
     queryFn: getProducts,
@@ -17,11 +17,13 @@ export default function Products() {
     <>
       {isLoading && <LoadingSpinner />}
       {error && <div>ERROR: {error.message}</div>}
-      {!isLoading && !error && (
-        <div className="flex flex-col text-2xl w-full h-full">
-          <SearchBar setSearch={setSearch} />
-          <ProductList data={data} search={search} />
-        </div>
+      {!isLoading && !error && data && (
+        <SearchProvider>
+          <div className="flex flex-col text-2xl w-full h-full">
+            <Search />
+            <ProductList />
+          </div>
+        </SearchProvider>
       )}
     </>
   );

@@ -1,18 +1,16 @@
 import { FcSearch } from "react-icons/fc";
+import { useSearch } from "../../contexts/SearchContext";
 
-type SearchBarType = {
-  setSearch(value: string): void;
-};
-
-export function SearchBar({ setSearch }: SearchBarType) {
+export function SearchBar() {
+  const { updateSearch } = useSearch();
   return (
-    <div className="bg-blue-100 mx-auto mt-4 rounded-lg flex items-center w-6/12">
+    <div className="bg-blue-100 mt-4 rounded-lg flex items-center flex-1">
       <FcSearch className="mr-1 ml-3" />
       <input
         type="text"
         placeholder="Search"
         className="p-2 flex-1 outline-0 "
-        onChange={(e) => setSearch(e.target.value)}
+        onChange={(e) => updateSearch(e.target.value, undefined)}
       />
     </div>
   );

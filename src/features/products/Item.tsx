@@ -1,14 +1,14 @@
 import { useState } from "react";
 import ItemDetails from "../itemDetails/ItemDetails";
-import ItemImage from "./item/ItemImage";
-import ItemInput from "./item/ItemInput";
-import ItemStats from "./item/ItemStats";
-import ItemTitle from "./item/ItemTitle";
+import ItemImage from "./components/item/ItemImage";
+import ItemInput from "./components/item/ItemInput";
+import ItemStats from "./components/item/ItemStats";
+import ItemTitle from "./components/item/ItemTitle";
 import type { ProductItemType } from "../../types/ProductItemType";
 
 type ItemType = {
-  item: ProductItemType
-}
+  item: ProductItemType;
+};
 
 export default function Item({ item }: ItemType) {
   const [openModal, setOpenModal] = useState(false);
@@ -20,6 +20,7 @@ export default function Item({ item }: ItemType) {
     <>
       <li
         onClick={showModal}
+        key={item.id}
         className="w-80 border-5 rounded-sm text-blue-100 hover:border-blue-600 hover:cursor-pointer"
       >
         <ItemImage image={item.image} />

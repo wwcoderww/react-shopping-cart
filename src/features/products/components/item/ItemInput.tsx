@@ -1,7 +1,7 @@
 import { FaMinus, FaPlus } from "react-icons/fa";
-import { useCart } from "../../../contexts/CartContext";
+import { useCart } from "../../../../contexts/CartContext";
 import type { MouseEvent } from "react";
-import type { ProductItemType } from "../../../types/ProductItemType";
+import type { ProductItemType } from "../../../../types/ProductItemType";
 
 type ItemInputType = {
   item: ProductItemType;
