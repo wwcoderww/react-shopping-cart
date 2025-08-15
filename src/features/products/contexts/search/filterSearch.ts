@@ -1,4 +1,4 @@
-import type { ProductItemType } from "../../types/ProductItemType";
+import type { ProductItemType } from "../../../../types/ProductItemType";
 
 export default function filterResults(
   currentSearch: ProductItemType[],

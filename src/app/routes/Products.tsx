@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import LoadingSpinner from "../../components/LoadingSpinner";
-import { SearchProvider } from "../../contexts/SearchContext";
+import { SearchProvider } from "../../features/products/contexts/SearchContext";
 import ProductList from "../../features/products/ProductList";
 import Search from "../../features/products/Search";
 import getProducts from "../../features/products/api/getProducts";

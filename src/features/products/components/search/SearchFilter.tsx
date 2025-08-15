@@ -1,20 +1,14 @@
-import { useSearch } from "../../../../contexts/SearchContext";
-import SearchOption from "./SearchOption";
+import { FilterProvider } from "../../contexts/FilterContext";
+import SearchFilterBtn from "./searchFilter/SearchFilterBtn";
+import SearchFilterDropdown from "./searchFilter/SearchFilterDropdown";
 
 export default function SearchFilter() {
-  const { updateSearch, itemCatagories } = useSearch();
-
   return (
-    <select
-      onChange={(e) => updateSearch(undefined, e.target.value)}
-      name="filter"
-      id="searchFilter"
-      className="text-center w-34"
-    >
-      <option value="">All Items</option>
-      {itemCatagories.map((item) => (
-        <SearchOption title={item} key={item} />
-      ))}
-    </select>
+    <FilterProvider>
+      <div>
+        <SearchFilterBtn />
+        <SearchFilterDropdown />
+      </div>
+    </FilterProvider>
   );
 }

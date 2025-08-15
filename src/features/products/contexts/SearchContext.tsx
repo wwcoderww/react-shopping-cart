@@ -5,7 +5,7 @@ import {
   useState,
   type ReactNode,
 } from "react";
-import type { ProductItemType } from "../types/ProductItemType";
+import type { ProductItemType } from "../../../types/ProductItemType";
 import { useQueryClient } from "@tanstack/react-query";
 import filterResults from "./search/filterSearch";
 
@@ -14,8 +14,6 @@ interface SearchContextType {
   itemCatagories: string[];
   updateSearch(search: string | undefined, filter: string | undefined): void;
 }
-
-// Set catagories based off allItems. Use useState incase catagory list changes from api/db
 
 const SearchContext = createContext<SearchContextType | null>(null);
 
@@ -28,13 +26,14 @@ function SearchProvider({ children }: { children: ReactNode }) {
   const [, allItems = []] = queryClient.getQueriesData<ProductItemType[]>({
     queryKey: ["allItems"],
   })[0];
-
+  // Filter Displayed Items by search || catagory
   function updateSearch(
     search: string | undefined,
     filter: string | undefined
   ) {
     setCurSearch(filterResults(allItems, search, filter));
   }
+  // On Mount
   useEffect(() => {
     // Catagory Options
     const allCatagories = new Set(allItems.flatMap((item) => item.category));

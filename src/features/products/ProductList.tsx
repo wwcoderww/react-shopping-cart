@@ -1,4 +1,4 @@
-import { useSearch } from "../../contexts/SearchContext";
+import { useSearch } from "./contexts/SearchContext";
 import type { ProductItemType } from "../../types/ProductItemType";
 import Item from "./Item";
 
