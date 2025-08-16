@@ -10,7 +10,7 @@ export function SearchBar() {
         type="text"
         placeholder="Search"
         className="p-2 outline-0 w-40 sm:w-full"
-        onChange={(e) => updateSearch(e.target.value, undefined)}
+        onChange={(e) => updateSearch(e.target.value)}
       />
     </div>
   );

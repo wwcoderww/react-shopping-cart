@@ -1,48 +1,53 @@
-import {
-  createContext,
-  useContext,
-  useEffect,
-  useState,
-  type ReactNode,
-} from "react";
-import type { ProductItemType } from "../../../types/ProductItemType";
 import { useQueryClient } from "@tanstack/react-query";
-import filterResults from "./search/filterSearch";
+import { createContext, useContext, useState, type ReactNode } from "react";
+import type { ProductItemType } from "../../../types/ProductItemType";
+import newFilter from "./search/newFilter";
+import newSearch from "./search/newSearch";
 
 interface SearchContextType {
-  curSearch: ProductItemType[];
+  curSearchItems: ProductItemType[];
   itemCatagories: string[];
-  updateSearch(search: string | undefined, filter: string | undefined): void;
+  updateSearch(search: string): void;
+  updateFilter(filter: string): void;
 }
 
 const SearchContext = createContext<SearchContextType | null>(null);
 
 function SearchProvider({ children }: { children: ReactNode }) {
-  // States
-  const [curSearch, setCurSearch] = useState<ProductItemType[]>([]);
-  const [itemCatagories, setItemCatagories] = useState<string[]>([]);
-  //   Get all items and catagory from database
+  // API HANDLING
   const queryClient = useQueryClient();
   const [, allItems = []] = queryClient.getQueriesData<ProductItemType[]>({
     queryKey: ["allItems"],
   })[0];
-  // Filter Displayed Items by search || catagory
-  function updateSearch(
-    search: string | undefined,
-    filter: string | undefined
-  ) {
-    setCurSearch(filterResults(allItems, search, filter));
+  const [...itemCatagories] = new Set(allItems.map((item) => item.category));
+  // States
+  const [curSearch, setCurSearch] = useState<string>("");
+  const [filteredItems, setFilteredItems] =
+    useState<ProductItemType[]>(allItems);
+  const [curSearchItems, setCurSearchItems] =
+    useState<ProductItemType[]>(filteredItems);
+  //   Get all items and catagory from database
+
+  function updateSearch(search: string) {
+    setCurSearch(search);
+    setCurSearchItems(newSearch(filteredItems, search));
   }
-  // On Mount
-  useEffect(() => {
-    // Catagory Options
-    const allCatagories = new Set(allItems.flatMap((item) => item.category));
-    setItemCatagories([...allCatagories]);
-    setCurSearch(allItems);
-  }, [allItems]);
+
+  function updateFilter(filter: string) {
+    const updatedFilter = newFilter(allItems, filter);
+    setFilteredItems(updatedFilter);
+    setCurSearchItems(newSearch(updatedFilter, curSearch));
+  }
 
   return (
-    <SearchContext.Provider value={{ updateSearch, curSearch, itemCatagories }}>
+    <SearchContext.Provider
+      value={{
+        updateSearch,
+        curSearchItems,
+        itemCatagories,
+        updateFilter,
+      }}
+    >
       {children}
     </SearchContext.Provider>
   );

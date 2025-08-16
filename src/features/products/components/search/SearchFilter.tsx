@@ -1,14 +1,10 @@
-import { FilterProvider } from "../../contexts/FilterContext";
-import SearchFilterBtn from "./searchFilter/SearchFilterBtn";
-import SearchFilterDropdown from "./searchFilter/SearchFilterDropdown";
-
+import DropDownMenu from "../../../../components/dropDownMenu/DropDownMenu";
+import { useSearch } from "../../contexts/SearchContext";
+// Make reusable drop down. Need btn name, function(value), [dataName, displayName][]
 export default function SearchFilter() {
+  const { updateFilter, itemCatagories } = useSearch();
+
   return (
-    <FilterProvider>
-      <div>
-        <SearchFilterBtn />
-        <SearchFilterDropdown />
-      </div>
-    </FilterProvider>
+    <DropDownMenu handleFunction={updateFilter} options={itemCatagories} />
   );
 }
