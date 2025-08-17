@@ -16,6 +16,8 @@ type DropDownMenuProviderType = {
 type DropDownMenuType = {
   isOpen: boolean;
   setIsOpen: Dispatch<SetStateAction<boolean>>;
+  curActive: string;
+  setCurActive: Dispatch<SetStateAction<string>>;
   options: string[];
   handleFunction(value: string): void;
 };
@@ -28,10 +30,18 @@ function DropDownMenuProvider({
   children,
 }: DropDownMenuProviderType) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [curActive, setCurActive] = useState<string>("");
 
   return (
     <DropDownMenuContext.Provider
-      value={{ isOpen, setIsOpen, handleFunction, options }}
+      value={{
+        isOpen,
+        setIsOpen,
+        handleFunction,
+        options,
+        curActive,
+        setCurActive,
+      }}
     >
       {children}
     </DropDownMenuContext.Provider>

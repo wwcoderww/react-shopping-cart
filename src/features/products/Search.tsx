@@ -1,5 +1,5 @@
 import SearchFilter from "./components/search/SearchFilter";
-import { SearchBar } from "./SearchBar";
+import { SearchBar } from "./components/search/SearchBar";
 
 export default function Search() {
   return (

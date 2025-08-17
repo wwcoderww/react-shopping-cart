@@ -1,5 +1,5 @@
 import { FcSearch } from "react-icons/fc";
-import { useSearch } from "./contexts/SearchContext";
+import { useSearch } from "../../contexts/SearchContext";
 
 export function SearchBar() {
   const { updateSearch } = useSearch();
